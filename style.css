@@ -1,0 +1,90 @@
+:root {
+  --primary-clr-200: #fffbeb;
+  --primary-clr-400: #495579;
+  --primary-clr-600: #263159;
+  --primary-clr-800: #251749;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-clr-200);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#title-container {
+  background-color: var(--primary-clr-400);
+  text-align: center;
+  width: 100%;
+  padding-block: 2em;
+}
+
+.title {
+  color: var(--primary-clr-200);
+  text-shadow: -5px 5px var(--primary-clr-800);
+  font-weight: 700;
+}
+
+.buttons {
+  display: flex;
+  gap: 3em;
+}
+
+button {
+  background-color: var(--primary-clr-400);
+  border: none;
+  font-size: 8rem;
+  padding: 0.2em;
+  border-radius: 25px;
+  box-shadow: -10px 10px var(--primary-clr-800);
+}
+
+button:hover {
+  background-color: var(--primary-clr-600);
+}
+
+.score-container {
+  display: flex;
+  gap: 25em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10em;
+}
+
+#gameResult {
+  font-size: 3em;
+  font-weight: 700;
+  color: var(--primary-clr-800);
+  margin-bottom: 1.5em;
+}
+
+.score {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--primary-clr-800);
+}
+
+#footer {
+  background-color: var(--primary-clr-400);
+  color: var(--primary-clr-200);
+  width: 100%;
+  text-align: center;
+}

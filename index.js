@@ -20,7 +20,7 @@ function getPlayerChoice() {
   return pSelect;
 }
 
-function playerRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
   let player = playerSelection;
   let computer = computerSelection;
 
@@ -49,22 +49,45 @@ function playerRound(playerSelection, computerSelection) {
 
 function declareWinner() {
   if (computerScore === playerScore) {
-    console.log(
-      `It's a tie!\nYou: ${playerScore} \nComputer: ${computerScore}`
-    );
+    return `It's a tie!`;
   } else if (computerScore > playerScore) {
-    console.log(`You Lose!\nYou: ${playerScore} \nComputer: ${computerScore}`);
+    return `You Lose! Isa kang kahihiyan`;
   } else {
-    console.log(`You Win!\nYou: ${playerScore} \nComputer: ${computerScore}`);
+    return `You Win! Chamba`;
   }
 }
 
-function game() {
-  for (let i = 0; i < 5; ++i) {
-    let computerSelection = getComputerChoice();
-    let playerSelection = getPlayerChoice();
-    console.log(playerRound(playerSelection, computerSelection));
+/**********UI**********/
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const result = document.querySelector("#result");
+const yourScore = document.querySelector("#yourScore");
+const compScore = document.querySelector("#compScore");
+const gameResult = document.querySelector("#gameResult");
+const restartDiv = document.querySelector("#restart");
+
+rock.addEventListener("click", () => buttonClick("rock"));
+paper.addEventListener("click", () => buttonClick("paper"));
+scissors.addEventListener("click", () => buttonClick("scissors"));
+
+function buttonClick(playerSelection) {
+  const computerSelection = getComputerChoice();
+  const roundResult = playRound(playerSelection, computerSelection);
+
+  displayResult(roundResult);
+  displayScore();
+
+  if (computerScore === 5 || playerScore === 5) {
+    gameResult.textContent = declareWinner();
   }
-  declareWinner();
 }
-game();
+
+function displayResult(roundResult) {
+  gameResult.textContent = roundResult;
+}
+
+function displayScore() {
+  yourScore.textContent = playerScore;
+  compScore.textContent = computerScore;
+}
