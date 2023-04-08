@@ -3,7 +3,7 @@ let playerScore = 0;
 
 function getComputerChoice() {
   let randomNum = Math.floor(Math.random() * 3) + 1;
-  let cSelect;
+  let cSelect = 0;
 
   if (randomNum === 1) {
     cSelect = "rock";
@@ -13,11 +13,6 @@ function getComputerChoice() {
     cSelect = "scissors";
   }
   return cSelect;
-}
-
-function getPlayerChoice() {
-  let pSelect = prompt("Enter your choice: ").toLowerCase();
-  return pSelect;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -58,18 +53,18 @@ function declareWinner() {
 }
 
 /**********UI**********/
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
-const result = document.querySelector("#result");
-const yourScore = document.querySelector("#yourScore");
-const compScore = document.querySelector("#compScore");
-const gameResult = document.querySelector("#gameResult");
-const restartDiv = document.querySelector("#restart");
+const rockEl = document.getElementById("rock");
+const paperEl = document.getElementById("paper");
+const scissorsEl = document.getElementById("scissors");
+const result = document.getElementById("result");
+const yourScore = document.getElementById("yourScore");
+const compScore = document.getElementById("compScore");
+const gameResult = document.getElementById("gameResult");
+const restartDiv = document.getElementById("restart");
 
-rock.addEventListener("click", () => buttonClick("rock"));
-paper.addEventListener("click", () => buttonClick("paper"));
-scissors.addEventListener("click", () => buttonClick("scissors"));
+rockEl.addEventListener("click", () => buttonClick("rock"));
+paperEl.addEventListener("click", () => buttonClick("paper"));
+scissorsEl.addEventListener("click", () => buttonClick("scissors"));
 
 function buttonClick(playerSelection) {
   const computerSelection = getComputerChoice();
@@ -79,15 +74,20 @@ function buttonClick(playerSelection) {
   displayScore();
 
   if (computerScore === 5 || playerScore === 5) {
-    gameResult.textContent = declareWinner();
+    gameResult.innerText = declareWinner();
+    computerScore = 0;
+    playerScore = 0;
+    rockEl.disabled = true;
+    paperEl.disabled = true;
+    scissorsEl.disabled = true;
   }
 }
 
 function displayResult(roundResult) {
-  gameResult.textContent = roundResult;
+  gameResult.innerText = roundResult;
 }
 
 function displayScore() {
-  yourScore.textContent = playerScore;
-  compScore.textContent = computerScore;
+  yourScore.innerText = playerScore;
+  compScore.innerText = computerScore;
 }
